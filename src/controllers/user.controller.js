@@ -2,11 +2,13 @@ import { UserModel } from "../models/user.model.js"
 
 export const createUser = async (req, res) => {
     try {
-        const {username, email, password} = req.body //reemplazar por método de express validator 
+        const {username, email, password, addresses, roles } = req.body //reemplazar por método de express validator 
         const newUser = await UserModel.create({
             username,
             email,
-            password
+            password,
+            addresses,
+            roles
         })
 
         return res.status(201).json({
@@ -25,7 +27,7 @@ export const createUser = async (req, res) => {
 }
 export const getAllUsers = async (_req, res) => {
     try {
-        const users = await UserModel.find()
+        const users = await UserModel.find().populate("roles")
 
         return res.status(200).json({
             message: "Se encontró todos los usuarios",
@@ -79,7 +81,13 @@ export const updateUser = async (req, res) => {
 }
 export const deleteUser = async (req, res) => {
     try {
-        
+        const { id } = req.params
+        const deletedUser = await UserModel.findByIdAndDelete(id)
+
+        return res.status(200).json({
+            message: "Usuario eliminado",
+            data: deletedUser
+        })
     } catch (error) {
         //para ver error en mi consola
         console.log(error)
