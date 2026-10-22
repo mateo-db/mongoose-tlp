@@ -1,3 +1,5 @@
+import { RoleModel } from "../models/role.model.js"
+
 export const createRole = async (req, res) => {
     try {
         const { rolename } = req.body //reemplazar por método de express validator 

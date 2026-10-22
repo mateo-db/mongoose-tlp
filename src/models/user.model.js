@@ -32,21 +32,23 @@ const userSchema = new Schema({
     //         required: true,
     //     }
     // }
-    addresses: [{ //arreglo de objetos
+    addresses: [
+        { //arreglo de objetos
         // _id: false, //para eliminar ids de cada objeto en el arreglo
-        street: {
-            type: String,
-            required: true,
-        },
-        city: {
-            type: String,
-            required: true,
-        },
-        country: {
-            type: String,
-            required: true,
+            street: {
+                type: String,
+                required: true,
+            },
+            city: {
+                type: String,
+                required: true,
+            },
+            country: {
+                type: String,
+                required: true,
+            }
         }
-    }],
+],
     roles: [
         {
             type: Types.ObjectId,

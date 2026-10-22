@@ -2,7 +2,8 @@ import { TaskModel } from "../models/task.model.js";
 
 export const createTask = async (req, res) => {
     try {
-        const { title, description, author } = req.body //reemplazar por método de express validator 
+        const { title, description, author } = req.body //reemplazar por método de express validator
+        //verificar unicidad de author y user antes de crear task 
         const newTask = await TaskModel.create({
             title,
             description,

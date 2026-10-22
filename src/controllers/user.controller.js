@@ -64,7 +64,7 @@ export const updateUser = async (req, res) => {
         const { username } = req.body
 
         //este metodo pide primer parametro id y segundo lo que se quiere actualizar, como tercer parametro le mandamos opciones: ej, returnDocument: "after" (para que devuelva el nuevo estado del usuario)
-        const updatedUser = await UserModel.findByIdAndDelete(id, { username }, {returnDocument: "after"})
+        const updatedUser = await UserModel.findByIdAndUpdate(id, { username }, {returnDocument: "after"})
 
         return res.status(200).json({
             message: "Se actualizó usuario",
